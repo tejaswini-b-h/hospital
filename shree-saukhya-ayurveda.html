@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Saukhya Ayurveda Chikitsalaya</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Hind:wght@300;400;500;600&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark:   #2D5016;
+  --green:        #4A7C2F;
+  --green-mid:    #6AA03A;
+  --green-light:  #EDF4E0;
+  --green-pale:   #F5F9EE;
+  --gold:         #B8860B;
+  --gold-light:   #F5E6C0;
+  --gold-pale:    #FDF8EC;
+  --brown:        #7B5E3A;
+  --brown-light:  #F0E6D6;
+  --cream:        #FDFAF4;
+  --white:        #FFFFFF;
+  --text-dark:    #1E2D0E;
+  --text-mid:     #4A5568;
+  --text-light:   #718096;
+  --shadow-sm:    0 2px 10px rgba(45,80,22,0.08);
+  --shadow-md:    0 6px 24px rgba(45,80,22,0.12);
+  --shadow-lg:    0 16px 48px rgba(45,80,22,0.16);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Hind', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ── FLOATING BOOK BUTTON ── */
+.float-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  color: white;
+  padding: 0.9rem 1.6rem;
+  border-radius: 50px;
+  font-family: 'Hind', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  box-shadow: 0 6px 24px rgba(45,80,22,0.4);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: floatPulse 2.5s ease-in-out infinite;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.float-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 32px rgba(45,80,22,0.5);
+}
+@keyframes floatPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(45,80,22,0.4); }
+  50% { box-shadow: 0 6px 32px rgba(45,80,22,0.65), 0 0 0 8px rgba(74,124,47,0.12); }
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--green-dark);
+  padding: 0.45rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.75);
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.topbar span { display: flex; align-items: center; gap: 0.4rem; }
+
+/* ── NAVBAR ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 2px solid var(--green-light);
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.logo-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; color: var(--green-dark);
+  line-height: 1.2;
+}
+.logo-sub { font-size: 0.6rem; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 0.2rem; list-style: none; }
+.nav-links a {
+  display: block; padding: 0.45rem 0.85rem;
+  font-size: 0.83rem; font-weight: 500; color: var(--text-mid);
+  text-decoration: none; border-radius: 6px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { background: var(--green-light); color: var(--green); }
+
+.btn-book {
+  background: linear-gradient(135deg, var(--green-mid), var(--green));
+  color: white; border: none;
+  padding: 0.65rem 1.4rem; border-radius: 8px;
+  font-family: 'Hind', sans-serif; font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  box-shadow: 0 3px 12px rgba(74,124,47,0.35);
+  transition: all 0.22s;
+}
+.btn-book:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,124,47,0.45); }
+.btn-book.gold {
+  background: linear-gradient(135deg, var(--gold), #8B6914);
+  box-shadow: 0 3px 12px rgba(184,134,11,0.35);
+}
+.btn-book.gold:hover { box-shadow: 0 6px 20px rgba(184,134,11,0.45); }
+.btn-book.large {
+  padding: 0.9rem 2rem; font-size: 1rem;
+}
+.btn-book.outline {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green);
+  box-shadow: none;
+}
+.btn-book.outline:hover { background: var(--green-light); }
+
+/* ══════════════════════════════
+   SECTION 1 — HERO
+══════════════════════════════ */
+.hero {
+  background: linear-gradient(135deg, var(--cream) 0%, var(--green-pale) 50%, var(--gold-pale) 100%);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(74,124,47,0.06) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(184,134,11,0.06) 0%, transparent 50%);
+}
+/* leaf decorations */
+.leaf-deco {
+  position: absolute; font-size: 4rem; opacity: 0.06; pointer-events: none; user-select: none;
+}
+.leaf-1 { top: 5%; left: 3%; transform: rotate(-20deg); }
+.leaf-2 { bottom: 10%; left: 8%; transform: rotate(30deg); }
+.leaf-3 { top: 15%; right: 2%; transform: rotate(15deg); font-size: 5rem; }
+
+.hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold-pale); border: 1px solid var(--gold-light);
+  color: var(--gold); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.35rem 0.9rem; border-radius: 20px;
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--green-dark); line-height: 1.15;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-title .line2 {
+  font-style: italic; color: var(--brown);
+  display: block; font-size: 0.85em;
+}
+.hero-subtitle {
+  font-size: 1.05rem; color: var(--text-mid);
+  font-weight: 300; line-height: 1.6;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.cta-highlight {
+  background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
+  color: white; border: none;
+  padding: 1rem 2.2rem; border-radius: 10px;
+  font-family: 'Hind', sans-serif; font-size: 1.05rem; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+  box-shadow: 0 6px 24px rgba(45,80,22,0.35);
+  animation: ctaPulse 2s ease-in-out infinite;
+  transition: transform 0.2s;
+  text-decoration: none;
+}
+.cta-highlight:hover { transform: translateY(-3px); }
+@keyframes ctaPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(45,80,22,0.35); }
+  50% { box-shadow: 0 6px 32px rgba(45,80,22,0.55), 0 0 0 6px rgba(74,124,47,0.1); }
+}
+
+.hero-trust {
+  display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.trust-pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: white; border: 1px solid var(--green-light);
+  border-radius: 20px; padding: 0.4rem 0.9rem;
+  font-size: 0.76rem; font-weight: 500; color: var(--green-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Doctor image right side */
+.hero-image-side {
+  display: flex; justify-content: center; align-items: flex-end;
+  position: relative;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.doctor-image-frame {
+  position: relative;
+  width: 340px;
+}
+.doctor-img-bg {
+  width: 310px; height: 390px;
+  background: linear-gradient(160deg, var(--green-light) 0%, var(--gold-pale) 100%);
+  border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin: 0 auto;
+}
+.doctor-img-placeholder {
+  font-size: 11rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(45,80,22,0.2));
+}
+.doctor-badge-float {
+  position: absolute; bottom: 30px; left: -20px;
+  background: white; border: 1px solid var(--green-light);
+  border-radius: 12px; padding: 0.7rem 1rem;
+  box-shadow: var(--shadow-md);
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.78rem;
+}
+.badge-icon { font-size: 1.4rem; }
+.badge-text-main { font-weight: 700; color: var(--green-dark); font-size: 0.85rem; }
+.badge-text-sub { color: var(--text-light); font-size: 0.68rem; }
+.years-badge {
+  position: absolute; top: 20px; right: -10px;
+  background: linear-gradient(135deg, var(--gold), #8B6914);
+  color: white; border-radius: 50%;
+  width: 72px; height: 72px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md);
+  font-size: 0.6rem; font-weight: 600; text-align: center; letter-spacing: 0.04em;
+}
+.years-badge strong { font-size: 1.4rem; line-height: 1; }
+
+/* ══════════════════════════════
+   TRUST BAR
+══════════════════════════════ */
+.trust-bar {
+  background: var(--green-dark);
+  padding: 1rem 2rem;
+}
+.trust-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-around; flex-wrap: wrap; gap: 0.8rem;
+}
+.tb-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.8); font-weight: 500;
+}
+
+/* ══════════════════════════════
+   SECTION COMMONS
+══════════════════════════════ */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.sec-tag {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--green); background: var(--green-light);
+  padding: 0.28rem 0.8rem; border-radius: 20px; margin-bottom: 0.7rem;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  color: var(--green-dark); line-height: 1.25; margin-bottom: 0.7rem;
+}
+.sec-desc { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; max-width: 540px; }
+.sec-header { margin-bottom: 3rem; }
+.sec-header.centered { text-align: center; }
+.sec-header.centered .sec-desc { margin: 0 auto; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════
+   SECTION 2 — SERVICES
+══════════════════════════════ */
+.services-sec { background: var(--white); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.service-card {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid var(--green-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green-mid);
+}
+
+.service-img {
+  height: 170px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.service-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.15));
+}
+
+.service-body { padding: 1.4rem; }
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; color: var(--green-dark); margin-bottom: 0.4rem;
+}
+.service-items { list-style: none; }
+.service-items li {
+  font-size: 0.78rem; color: var(--text-mid);
+  padding: 0.2rem 0;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.service-items li::before { content: '🌿'; font-size: 0.65rem; }
+.service-more {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  margin-top: 0.9rem; font-size: 0.76rem; font-weight: 600;
+  color: var(--green); cursor: pointer;
+}
+
+/* Service modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(30,45,14,0.6);
+  backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: white; border-radius: 20px;
+  max-width: 560px; width: 100%;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--green-light); border: none; cursor: pointer;
+  font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  color: var(--green-dark);
+}
+.modal-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--green-dark); margin-bottom: 0.6rem;
+}
+.modal-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; }
+.modal-list { list-style: none; margin-bottom: 1.5rem; }
+.modal-list li {
+  padding: 0.35rem 0; font-size: 0.84rem; color: var(--text-mid);
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  border-bottom: 1px solid var(--green-light);
+}
+.modal-list li::before { content: '✦'; color: var(--green); font-size: 0.7rem; margin-top: 3px; flex-shrink: 0; }
+
+/* ══════════════════════════════
+   SECTION 3 — ABOUT VAIDYA
+══════════════════════════════ */
+.vaidya-sec { background: var(--green-pale); }
+
+.vaidya-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 4rem; align-items: start;
+}
+
+.vaidya-left { text-align: center; }
+.vaidya-photo {
+  width: 220px; height: 260px;
+  background: linear-gradient(160deg, var(--green-light), var(--gold-pale));
+  border-radius: 50% 50% 40% 40% / 40% 40% 50% 50%;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden; margin: 0 auto 1.5rem;
+  border: 4px solid white;
+  box-shadow: var(--shadow-lg);
+}
+.vaidya-photo-img { font-size: 8rem; line-height: 1; }
+.vaidya-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; color: var(--green-dark);
+}
+.vaidya-degree {
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--green); background: var(--green-light);
+  display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; margin: 0.4rem 0;
+}
+.vaidya-role { font-size: 0.84rem; color: var(--brown); font-weight: 500; margin-bottom: 0.8rem; }
+.vaidya-quote {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 0.85rem; color: var(--text-mid); line-height: 1.65;
+  background: white; border-left: 3px solid var(--green-mid);
+  padding: 0.8rem 1rem; border-radius: 0 8px 8px 0;
+  text-align: left; margin-top: 1rem;
+}
+
+.vaidya-right { }
+.vaidya-intro {
+  font-size: 0.92rem; color: var(--text-mid); line-height: 1.75;
+  margin-bottom: 1.8rem;
+}
+.vaidya-details { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+
+.detail-row {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: white; border-radius: 12px; padding: 1rem 1.2rem;
+  border: 1px solid var(--green-light); box-shadow: var(--shadow-sm);
+}
+.detail-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--green-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.detail-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.2rem; }
+.detail-value { font-size: 0.88rem; font-weight: 500; color: var(--text-dark); line-height: 1.5; }
+
+/* ══════════════════════════════
+   SECTION 4 — RELIEF RATE
+══════════════════════════════ */
+.relief-sec { background: var(--white); }
+
+.relief-grid {
+  display: flex; flex-direction: column; gap: 1.2rem;
+  max-width: 800px; margin: 0 auto;
+}
+
+.relief-row {
+  display: grid; grid-template-columns: 160px 1fr 80px;
+  gap: 1.2rem; align-items: center;
+  background: var(--cream); border-radius: 12px;
+  padding: 1.1rem 1.5rem;
+  border: 1px solid var(--green-light);
+}
+
+.relief-label { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); }
+.relief-sub { font-size: 0.7rem; color: var(--text-light); margin-top: 0.1rem; }
+
+.relief-bar-bg {
+  height: 14px; background: var(--green-light);
+  border-radius: 7px; overflow: hidden;
+}
+.relief-bar-fill {
+  height: 100%; border-radius: 7px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.23,1,0.32,1);
+}
+.relief-bar-fill.animated { transform: scaleX(1); }
+
+.relief-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  text-align: right;
+}
+
+.relief-note {
+  text-align: center; margin-top: 2rem;
+  font-size: 0.8rem; color: var(--text-light);
+  font-style: italic;
+}
+
+.relief-summary {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem; margin-bottom: 2.5rem;
+}
+.relief-sum-card {
+  background: var(--green-pale); border: 1px solid var(--green-light);
+  border-radius: 12px; padding: 1.2rem; text-align: center;
+}
+.relief-sum-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; color: var(--green-dark); line-height: 1;
+}
+.relief-sum-label { font-size: 0.74rem; color: var(--text-mid); margin-top: 0.3rem; }
+
+/* ══════════════════════════════
+   SECTION 5 — HOW WE HELP
+══════════════════════════════ */
+.help-sec { background: var(--green-pale); }
+
+.help-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.help-card {
+  background: white; border-radius: 16px;
+  padding: 1.8rem 1.5rem;
+  border: 1.5px solid var(--green-light);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+.help-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green-mid);
+}
+.help-icon-wrap {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--green-light), var(--gold-pale));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin: 0 auto 1.1rem;
+  transition: transform 0.3s;
+}
+.help-card:hover .help-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+.help-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--green-dark); margin-bottom: 0.6rem; }
+.help-card-desc { font-size: 0.79rem; color: var(--text-mid); line-height: 1.65; }
+
+/* ══════════════════════════════
+   APPOINTMENT SECTION
+══════════════════════════════ */
+.appt-sec {
+  background: linear-gradient(135deg, var(--green-dark) 0%, #3D6B1E 100%);
+  position: relative; overflow: hidden;
+}
+.appt-sec::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 50%, rgba(184,134,11,0.08) 0%, transparent 50%);
+}
+.appt-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.appt-left .sec-title { color: white; }
+.appt-left .sec-desc { color: rgba(255,255,255,0.7); max-width: none; }
+.appt-left .sec-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+.appt-perks { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.appt-perk {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.84rem; color: rgba(255,255,255,0.8);
+}
+.appt-perk-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold-light); flex-shrink: 0;
+}
+.appt-card {
+  background: white; border-radius: 20px;
+  padding: 2.2rem; box-shadow: var(--shadow-lg);
+}
+.appt-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; color: var(--green-dark); margin-bottom: 0.25rem;
+}
+.appt-card-sub { font-size: 0.76rem; color: var(--text-light); margin-bottom: 1.4rem; }
+
+.form-group { margin-bottom: 0.9rem; }
+.form-label { display: block; font-size: 0.69rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.3rem; }
+.form-control {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1.5px solid #E2E8D8; border-radius: 8px;
+  font-family: 'Hind', sans-serif; font-size: 0.86rem; color: var(--text-dark);
+  background: var(--cream); outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.form-control:focus { border-color: var(--green); background: white; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.appt-success {
+  display: none; text-align: center; padding: 1.5rem;
+  background: var(--green-pale); border: 1px solid var(--green-light);
+  border-radius: 12px; color: var(--green-dark); font-size: 0.88rem; font-weight: 600;
+}
+.appt-success.show { display: block; animation: fadeUp 0.4s ease; }
+
+/* ══════════════════════════════
+   CONTACT STRIP
+══════════════════════════════ */
+.contact-strip {
+  background: var(--gold-pale);
+  border-top: 2px solid var(--gold-light);
+  padding: 3rem 2rem;
+}
+.contact-strip-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.cs-card {
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  background: white; border-radius: 12px; padding: 1.1rem;
+  border: 1px solid var(--gold-light); box-shadow: var(--shadow-sm);
+}
+.cs-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--green-light); display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.cs-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); }
+.cs-value { font-size: 0.86rem; font-weight: 600; color: var(--text-dark); margin-top: 0.2rem; }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  background: var(--green-dark);
+  color: rgba(255,255,255,0.6);
+  padding: 3rem 2rem 0;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-col-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: white; margin-bottom: 1rem; }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 0; font-size: 0.72rem; flex-wrap: wrap; gap: 0.5rem;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .help-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-strip-inner { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-image-side { order: -1; }
+  .doctor-img-bg { width: 240px; height: 300px; }
+  .vaidya-grid { grid-template-columns: 1fr; }
+  .appt-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .relief-row { grid-template-columns: 120px 1fr 60px; }
+  .relief-summary { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .float-btn { bottom: 1rem; right: 1rem; font-size: 0.78rem; padding: 0.75rem 1.2rem; }
+}
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .help-grid { grid-template-columns: 1fr 1fr; }
+  .contact-strip-inner { grid-template-columns: 1fr; }
+  .relief-row { grid-template-columns: 100px 1fr 52px; gap: 0.8rem; padding: 0.9rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating CTA -->
+<a href="#appointment" class="float-btn">📅 Book Consultation</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+    <span>📍 Shivamogga, Karnataka</span>
+    <span>🕐 Mon–Sat: 9:00 AM – 7:00 PM</span>
+  </div>
+  <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+    <span>📞 +91 98765 43210</span>
+    <span style="background:#B8860B;color:white;padding:0.2rem 0.7rem;border-radius:20px;font-weight:700;font-size:0.68rem;letter-spacing:0.04em">🌿 Ayurveda | Panchakarma</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🌿</div>
+      <div>
+        <div class="logo-name">Shree Saukhya Ayurveda</div>
+        <div class="logo-sub">Chikitsalaya · Est. 2005</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#vaidya">Our Vaidya</a></li>
+      <li><a href="#relief">Results</a></li>
+      <li><a href="#appointment">Appointment</a></li>
+    </ul>
+    <a href="#appointment" class="btn-book">📅 Book Consultation</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     SECTION 1 — HERO
+══════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="leaf-deco leaf-1">🍃</div>
+  <div class="leaf-deco leaf-2">🌿</div>
+  <div class="leaf-deco leaf-3">🌱</div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🌿 Traditional Ayurvedic Healing</div>
+      <h1 class="hero-title">
+        Ayurveda Chikitsa
+        <span class="line2">Kerala Panchakarma</span>
+      </h1>
+      <p class="hero-subtitle">
+        Ancient wisdom meets modern healing. Experience authentic Ayurvedic treatments, Kerala Panchakarma therapies, and holistic wellness at <strong>Shree Saukhya Ayurveda Chikitsalaya</strong>.
+      </p>
+      <div class="hero-cta">
+        <a href="#appointment" class="cta-highlight">📅 Book Consultation</a>
+        <a href="#services" class="btn-book outline">Our Services →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-pill">✅ BAMS Certified Vaidya</div>
+        <div class="trust-pill">🌿 100% Natural Herbs</div>
+        <div class="trust-pill">⭐ 1000+ Happy Patients</div>
+      </div>
+    </div>
+
+    <div class="hero-image-side">
+      <div class="doctor-image-frame">
+        <div class="doctor-img-bg">
+          <div class="doctor-img-placeholder">👨‍⚕️</div>
+        </div>
+        <div class="doctor-badge-float">
+          <div class="badge-icon">🏆</div>
+          <div>
+            <div class="badge-text-main">Dr. Vaidya Expert</div>
+            <div class="badge-text-sub">BAMS · Panchakarma Specialist</div>
+          </div>
+        </div>
+        <div class="years-badge">
+          <strong>20+</strong>
+          Years<br>Exp.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="tb-item">🏥 BAMS Certified Vaidya</div>
+    <div class="tb-item">🌿 Kerala Panchakarma Expert</div>
+    <div class="tb-item">💊 100% Natural Medicines</div>
+    <div class="tb-item">🚑 No Side Effects</div>
+    <div class="tb-item">✅ 1000+ Treated Patients</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SECTION 2 — SERVICES
+══════════════════════════════ -->
+<section class="services-sec" id="services">
+  <div class="section-inner">
+    <div class="sec-header centered reveal">
+      <span class="sec-tag">Treatments</span>
+      <h2 class="sec-title">Our Specialisational Services</h2>
+      <p class="sec-desc">Authentic Ayurvedic therapies rooted in ancient Kerala traditions, tailored for modern ailments. Click any service to learn more.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Joint & Spine -->
+      <div class="service-card reveal" style="transition-delay:0.05s" onclick="openModal('joint')">
+        <div class="service-img" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">🦴</div>
+        <div class="service-body">
+          <div class="service-name">Joint & Spine Care</div>
+          <ul class="service-items">
+            <li>Knee Joint Pain</li>
+            <li>Cervical Pain (Neck Pain)</li>
+            <li>Lower Back Pain</li>
+          </ul>
+          <div class="service-more">Learn More & Book →</div>
+        </div>
+      </div>
+
+      <!-- Internal Organ -->
+      <div class="service-card reveal" style="transition-delay:0.12s" onclick="openModal('internal')">
+        <div class="service-img" style="background:linear-gradient(135deg,#FFF8E1,#FFECB3)">🫀</div>
+        <div class="service-body">
+          <div class="service-name">Internal Organ Care</div>
+          <ul class="service-items">
+            <li>Cardiac Care</li>
+            <li>Liver Disorders</li>
+            <li>Kidney Problems</li>
+          </ul>
+          <div class="service-more">Learn More & Book →</div>
+        </div>
+      </div>
+
+      <!-- Skin & Hair -->
+      <div class="service-card reveal" style="transition-delay:0.2s" onclick="openModal('skin')">
+        <div class="service-img" style="background:linear-gradient(135deg,#FCE4EC,#F8BBD0)">✨</div>
+        <div class="service-body">
+          <div class="service-name">Skin & Hair Care</div>
+          <ul class="service-items">
+            <li>Hair Fall Treatment</li>
+            <li>Dandruff Treatment</li>
+          </ul>
+          <div class="service-more">Learn More & Book →</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#appointment" class="btn-book large gold">📅 Book Your Consultation Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE MODALS -->
+<div class="modal-overlay" id="modal-joint" onclick="closeModal(event,'modal-joint')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-joint').classList.remove('open')">✕</button>
+    <div class="modal-icon">🦴</div>
+    <div class="modal-title">Joint & Spine Care</div>
+    <div class="modal-desc">Our Joint & Spine Care programme uses authentic Kerala Panchakarma therapies like Kati Basti, Janu Basti, and Greeva Basti to address the root cause of pain — not just the symptoms. Medicated oils penetrate deep into tissues, restoring balance and mobility.</div>
+    <ul class="modal-list">
+      <li><strong>Knee Joint Pain</strong> — Janu Basti, herbal poultice massage, Pinda Sweda for cartilage repair and pain relief</li>
+      <li><strong>Cervical Pain (Neck Pain)</strong> — Greeva Basti, Nasya therapy, and neck muscle relaxation treatments</li>
+      <li><strong>Lower Back Pain</strong> — Kati Basti with warm medicated oil, Kizhi therapy, lifestyle correction</li>
+    </ul>
+    <a href="#appointment" class="btn-book large" onclick="document.getElementById('modal-joint').classList.remove('open')" style="width:100%;justify-content:center;">📅 Book Consultation for Joint Care</a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-internal" onclick="closeModal(event,'modal-internal')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-internal').classList.remove('open')">✕</button>
+    <div class="modal-icon">🫀</div>
+    <div class="modal-title">Internal Organ Care</div>
+    <div class="modal-desc">Ayurveda has a profound understanding of internal organ health. Our treatments use Panchakarma detox, Rasayana (rejuvenating) herbs, and dietary guidance to support and restore vital organ function naturally.</div>
+    <ul class="modal-list">
+      <li><strong>Cardiac Care</strong> — Hridaya Basti, Arjuna-based herbal formulations, stress-reduction therapies</li>
+      <li><strong>Liver Disorders</strong> — Virechana (therapeutic purgation), Kalyanaka Ghrita, liver-supportive herbs like Kutki and Bhringaraj</li>
+      <li><strong>Kidney Problems</strong> — Vasti therapy (enema), Punarnava formulations, dietary and fluid management</li>
+    </ul>
+    <a href="#appointment" class="btn-book large" onclick="document.getElementById('modal-internal').classList.remove('open')" style="width:100%;justify-content:center;">📅 Book Consultation for Organ Care</a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-skin" onclick="closeModal(event,'modal-skin')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-skin').classList.remove('open')">✕</button>
+    <div class="modal-icon">✨</div>
+    <div class="modal-title">Skin & Hair Care</div>
+    <div class="modal-desc">Ayurveda treats skin and hair conditions by addressing internal imbalances (doshas). Our personalised treatments combine herbal formulations, scalp therapies, and dietary advice for long-lasting results — naturally.</div>
+    <ul class="modal-list">
+      <li><strong>Hair Fall Treatment</strong> — Shiro Abhyanga, Nasya therapy, Bhringaraj & Amla-based oils, internal Rasayana herbs</li>
+      <li><strong>Dandruff Treatment</strong> — Medicated hair oils, Shirodhara, antifungal herbal pastes, scalp purification</li>
+    </ul>
+    <a href="#appointment" class="btn-book large" onclick="document.getElementById('modal-skin').classList.remove('open')" style="width:100%;justify-content:center;">📅 Book Consultation for Skin & Hair</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SECTION 3 — ABOUT VAIDYA
+══════════════════════════════ -->
+<section class="vaidya-sec" id="vaidya">
+  <div class="section-inner">
+    <div class="sec-header centered reveal">
+      <span class="sec-tag">Our Healer</span>
+      <h2 class="sec-title">About Our Vaidya</h2>
+      <p class="sec-desc">Meet the experienced Ayurvedic physician behind Shree Saukhya — a healer rooted in tradition, driven by compassion.</p>
+    </div>
+
+    <div class="vaidya-grid">
+      <div class="vaidya-left reveal">
+        <div class="vaidya-photo">
+          <div class="vaidya-photo-img">👨‍⚕️</div>
+        </div>
+        <div class="vaidya-name">Dr. [Vaidya Name]</div>
+        <div class="vaidya-degree">BAMS · MD (Ayurveda)</div>
+        <div class="vaidya-role">Ayurvedic Vaidya & Kerala Panchakarma Specialist</div>
+        <div class="vaidya-quote">
+          "True healing begins when we understand the root cause. Ayurveda does not treat a disease — it restores the harmony between mind, body, and nature."
+        </div>
+        <a href="#appointment" class="btn-book" style="margin-top:1.5rem;display:inline-flex">📅 Book with the Vaidya</a>
+      </div>
+
+      <div class="vaidya-right reveal" style="transition-delay:0.15s">
+        <p class="vaidya-intro">
+          With over 20 years of dedicated practice in Ayurveda and Kerala Panchakarma, Dr. [Name] has helped thousands of patients overcome chronic pain, metabolic disorders, and lifestyle diseases through the power of ancient science. Trained at prestigious Ayurvedic institutions in Kerala, the Vaidya brings authentic healing techniques directly to Shivamogga.
+        </p>
+        <div class="vaidya-details">
+          <div class="detail-row">
+            <div class="detail-icon">📅</div>
+            <div>
+              <div class="detail-label">Experience</div>
+              <div class="detail-value">20+ years in Ayurvedic Practice · 1000+ patients treated successfully</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🎓</div>
+            <div>
+              <div class="detail-label">Education & Training</div>
+              <div class="detail-value">BAMS from a recognized Ayurvedic University · Advanced Training in Kerala Panchakarma Therapies at traditional Kerala Ashrams</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🌿</div>
+            <div>
+              <div class="detail-label">Specialization</div>
+              <div class="detail-value">Joint Pain & Spine Disorders · Liver & Kidney Care · Skin & Hair Treatments · Cardiac Wellness</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🏥</div>
+            <div>
+              <div class="detail-label">Institutional Training</div>
+              <div class="detail-value">Trained at renowned Ayurvedic hospitals in Kerala · Affiliated with national Panchakarma associations</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🔍</div>
+            <div>
+              <div class="detail-label">Diagnosis Method</div>
+              <div class="detail-value">Nadi Pariksha (Pulse Diagnosis) · Prakriti Assessment · Traditional Ayurvedic examination methods</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#appointment" class="btn-book large gold">📅 Book a Consultation with the Vaidya</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SECTION 4 — RELIEF RATE
+══════════════════════════════ -->
+<section class="relief-sec" id="relief">
+  <div class="section-inner">
+    <div class="sec-header centered reveal">
+      <span class="sec-tag">Patient Outcomes</span>
+      <h2 class="sec-title">Immediate Relief Rate</h2>
+      <p class="sec-desc">Ayurvedic treatment works in stages. Here's how patients typically experience improvement through consistent treatment.</p>
+    </div>
+
+    <div class="relief-summary reveal">
+      <div class="relief-sum-card">
+        <div class="relief-sum-num">1000+</div>
+        <div class="relief-sum-label">Patients Treated</div>
+      </div>
+      <div class="relief-sum-card">
+        <div class="relief-sum-num">94%</div>
+        <div class="relief-sum-label">Report Significant Improvement</div>
+      </div>
+      <div class="relief-sum-card">
+        <div class="relief-sum-num">20+</div>
+        <div class="relief-sum-label">Years of Healing Experience</div>
+      </div>
+    </div>
+
+    <div class="relief-grid reveal">
+
+      <div class="relief-row">
+        <div>
+          <div class="relief-label">0–10% Relief</div>
+          <div class="relief-sub">Days 1–3 · Initial Phase</div>
+        </div>
+        <div class="relief-bar-bg">
+          <div class="relief-bar-fill" style="width:10%;background:linear-gradient(90deg,#A5D6A7,#81C784)" data-width="10"></div>
+        </div>
+        <div class="relief-pct" style="color:#4CAF50">10%</div>
+      </div>
+
+      <div class="relief-row">
+        <div>
+          <div class="relief-label">10–20% Relief</div>
+          <div class="relief-sub">Week 1 · Detox Begins</div>
+        </div>
+        <div class="relief-bar-bg">
+          <div class="relief-bar-fill" style="width:20%;background:linear-gradient(90deg,#66BB6A,#43A047)" data-width="20"></div>
+        </div>
+        <div class="relief-pct" style="color:#388E3C">20%</div>
+      </div>
+
+      <div class="relief-row">
+        <div>
+          <div class="relief-label">20–40% Relief</div>
+          <div class="relief-sub">Weeks 2–3 · Active Healing</div>
+        </div>
+        <div class="relief-bar-bg">
+          <div class="relief-bar-fill" style="width:40%;background:linear-gradient(90deg,#4A7C2F,#3B6424)" data-width="40"></div>
+        </div>
+        <div class="relief-pct" style="color:#2D5016">40%</div>
+      </div>
+
+      <div class="relief-row">
+        <div>
+          <div class="relief-label">50–90% Relief</div>
+          <div class="relief-sub">Month 1–2 · Deep Recovery</div>
+        </div>
+        <div class="relief-bar-bg">
+          <div class="relief-bar-fill" style="width:90%;background:linear-gradient(90deg,#B8860B,#8B6914)" data-width="90"></div>
+        </div>
+        <div class="relief-pct" style="color:#8B6914">90%</div>
+      </div>
+
+      <div class="relief-row">
+        <div>
+          <div class="relief-label">90–100% Relief</div>
+          <div class="relief-sub">Month 2–3 · Full Wellness</div>
+        </div>
+        <div class="relief-bar-bg">
+          <div class="relief-bar-fill" style="width:100%;background:linear-gradient(90deg,#FF8F00,#E65100)" data-width="100"></div>
+        </div>
+        <div class="relief-pct" style="color:#E65100">100%</div>
+      </div>
+
+    </div>
+    <div class="relief-note reveal">* Results vary by individual health condition, consistency of treatment, and lifestyle compliance. Based on patient-reported outcomes.</div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#appointment" class="btn-book large">📅 Start Your Healing Journey Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SECTION 5 — HOW WE HELP
+══════════════════════════════ -->
+<section class="help-sec" id="features">
+  <div class="section-inner">
+    <div class="sec-header centered reveal">
+      <span class="sec-tag">Digital Care</span>
+      <h2 class="sec-title">How Our Website Helps You</h2>
+      <p class="sec-desc">Beyond the clinic — we've built smart tools to support your Ayurvedic healing journey every day.</p>
+    </div>
+
+    <div class="help-grid">
+      <div class="help-card reveal" style="transition-delay:0.05s">
+        <div class="help-icon-wrap">💊</div>
+        <div class="help-card-title">Medicine Reminder</div>
+        <div class="help-card-desc">Never miss your prescribed Ayurvedic medicines. Our reminder system helps you take herbs and formulations at the exact right time for maximum benefit.</div>
+      </div>
+
+      <div class="help-card reveal" style="transition-delay:0.12s">
+        <div class="help-icon-wrap">🔔</div>
+        <div class="help-card-title">Follow-up Reminder</div>
+        <div class="help-card-desc">Receive timely reminders for your scheduled follow-up consultations so your treatment stays on track and your Vaidya can monitor your progress.</div>
+      </div>
+
+      <div class="help-card reveal" style="transition-delay:0.2s">
+        <div class="help-icon-wrap">📋</div>
+        <div class="help-card-title">Appointment Follow-up</div>
+        <div class="help-card-desc">Track and manage your appointments with ease. Get real-time updates, confirmations, and rescheduling options directly from the website.</div>
+      </div>
+
+      <div class="help-card reveal" style="transition-delay:0.28s">
+        <div class="help-icon-wrap">👨‍⚕️</div>
+        <div class="help-card-title">Know About the Vaidya</div>
+        <div class="help-card-desc">Learn about Dr. [Name]'s qualifications, specializations, and treatment philosophy before your visit — so you feel confident and informed.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#appointment" class="btn-book large gold">📅 Book Your Consultation Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     APPOINTMENT SECTION
+══════════════════════════════ -->
+<section class="appt-sec" id="appointment">
+  <div class="appt-inner">
+    <div class="appt-left reveal">
+      <span class="sec-tag">Consult Us</span>
+      <h2 class="sec-title">Book Your Consultation</h2>
+      <p class="sec-desc">Take the first step toward natural healing. Fill the form and our team will confirm your appointment within 2 hours.</p>
+      <div class="appt-perks">
+        <div class="appt-perk"><div class="appt-perk-dot"></div>Free first consultation guidance</div>
+        <div class="appt-perk"><div class="appt-perk-dot"></div>Personalised Prakriti (body type) assessment</div>
+        <div class="appt-perk"><div class="appt-perk-dot"></div>100% natural, no side-effect treatment</div>
+        <div class="appt-perk"><div class="appt-perk-dot"></div>Morning & evening slots available</div>
+        <div class="appt-perk"><div class="appt-perk-dot"></div>Confirmation via WhatsApp & call</div>
+      </div>
+    </div>
+
+    <div class="appt-card reveal" style="transition-delay:0.15s">
+      <div class="appt-card-title">📅 Book Consultation</div>
+      <div class="appt-card-sub">All fields required · We confirm within 2 hours</div>
+
+      <div class="appt-success" id="apptSuccess">
+        🌿 Thank you! Your consultation request has been received.<br>We will contact you shortly to confirm your appointment.
+      </div>
+
+      <div id="apptForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" id="apptFirst" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" id="apptPhone" placeholder="+91 98765 43210">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Health Concern</label>
+          <select class="form-control" id="apptConcern">
+            <option value="">Select Your Concern</option>
+            <optgroup label="Joint & Spine Care">
+              <option>Knee Joint Pain</option>
+              <option>Cervical / Neck Pain</option>
+              <option>Lower Back Pain</option>
+            </optgroup>
+            <optgroup label="Internal Organ Care">
+              <option>Cardiac Care</option>
+              <option>Liver Disorders</option>
+              <option>Kidney Problems</option>
+            </optgroup>
+            <optgroup label="Skin & Hair Care">
+              <option>Hair Fall Treatment</option>
+              <option>Dandruff Treatment</option>
+            </optgroup>
+            <option>General Ayurvedic Consultation</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Preferred Date</label>
+            <input type="date" class="form-control" id="apptDate">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Time</label>
+            <select class="form-control">
+              <option>09:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>02:00 PM</option>
+              <option>03:00 PM</option>
+              <option>04:00 PM</option>
+              <option>05:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Brief Description (Optional)</label>
+          <textarea class="form-control" style="height:70px;resize:none" placeholder="Briefly describe your symptoms or duration of problem..."></textarea>
+        </div>
+        <button class="btn-book large" style="width:100%;justify-content:center;margin-top:0.4rem" onclick="submitAppt()">
+          🌿 Confirm Consultation Request
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-strip-inner">
+    <div class="cs-card">
+      <div class="cs-icon">📍</div>
+      <div>
+        <div class="cs-label">Address</div>
+        <div class="cs-value">Shivamogga, Karnataka</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-icon">📞</div>
+      <div>
+        <div class="cs-label">Phone</div>
+        <div class="cs-value">+91 98765 43210</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-icon">🕐</div>
+      <div>
+        <div class="cs-label">Timings</div>
+        <div class="cs-value">Mon–Sat · 9 AM – 7 PM</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-icon">💬</div>
+      <div>
+        <div class="cs-label">WhatsApp</div>
+        <div class="cs-value">+91 98765 43210</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="logo" style="margin-bottom:1rem;display:flex">
+        <div class="logo-icon">🌿</div>
+        <div>
+          <div class="logo-name" style="color:white">Shree Saukhya Ayurveda</div>
+          <div class="logo-sub">Chikitsalaya · Shivamogga</div>
+        </div>
+      </a>
+      <p style="font-size:0.8rem;line-height:1.7;max-width:280px;margin-top:0.8rem">
+        Authentic Ayurvedic healing rooted in Kerala Panchakarma tradition. Restoring health, one patient at a time, since 2005.
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Joint & Spine Care</a></li>
+        <li><a href="#services">Internal Organ Care</a></li>
+        <li><a href="#services">Skin & Hair Care</a></li>
+        <li><a href="#services">Kerala Panchakarma</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#vaidya">About Vaidya</a></li>
+        <li><a href="#relief">Patient Results</a></li>
+        <li><a href="#appointment">Book Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Shree Saukhya Ayurveda Chikitsalaya. All rights reserved.</span>
+    <span>🌿 Healing with Nature</span>
+  </div>
+</footer>
+
+<script>
+// ── Scroll reveal ────────────────────────────────────────
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // animate relief bars
+      e.target.querySelectorAll('.relief-bar-fill').forEach(b => {
+        setTimeout(() => b.classList.add('animated'), 200);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── Relief bars – also observe the grid directly ─────────
+const reliefGrid = document.querySelector('.relief-grid');
+if (reliefGrid) {
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.relief-bar-fill').forEach((b, i) => {
+          setTimeout(() => b.classList.add('animated'), i * 180);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+  barObs.observe(reliefGrid);
+}
+
+// ── Service modal open/close ──────────────────────────────
+function openModal(type) {
+  document.getElementById('modal-' + type).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e, id) {
+  if (e.target === e.currentTarget) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.querySelectorAll('.modal-close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+  });
+});
+// Close modal and allow navigation to appointment
+document.querySelectorAll('.modal a.btn-book').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+  });
+});
+
+// ── Appointment form ──────────────────────────────────────
+document.getElementById('apptDate').min = new Date().toISOString().split('T')[0];
+
+function submitAppt() {
+  const name    = document.getElementById('apptFirst').value.trim();
+  const phone   = document.getElementById('apptPhone').value.trim();
+  const concern = document.getElementById('apptConcern').value;
+  const date    = document.getElementById('apptDate').value;
+
+  if (!name || !phone || !concern || !date) {
+    alert('🌿 Please fill in all required fields to book your consultation.');
+    return;
+  }
+
+  const btn = event.target;
+  btn.textContent = '⏳ Submitting...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('apptForm').style.display = 'none';
+    document.getElementById('apptSuccess').classList.add('show');
+  }, 1200);
+}
+
+// ── Sticky nav active link ────────────────────────────────
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = 'home';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navAs.forEach(a => {
+    a.style.background = a.getAttribute('href') === '#' + current ? 'var(--green-light)' : '';
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--green)' : '';
+  });
+});
+</script>
+</body>
+</html>
